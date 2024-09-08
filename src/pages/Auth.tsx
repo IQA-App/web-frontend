@@ -12,7 +12,7 @@ export const Auth: FC = () => {
       <form className="flex w-1/3 flex-col mx-auto gap-5" action='#'>
         <input type="text" className="input" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
         <input type="text" className="input" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-        <button className="btn btn-green mx-auto">Submit</button>
+        <button onClick={() => {console.log(email + password)}} className="btn btn-green mx-auto ">Submit</button>
       </form>
 
       <div className="flex justify-center mt-5">
