@@ -1,3 +1,9 @@
+export interface IUser {
+  id: number
+  email: string
+  token: string
+}
+
 export interface IUserData {
   email: string
   password: string
