@@ -13,18 +13,7 @@ export const Auth: FC = () => {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 
-  return (
-    <div className="mt-40 flex flex-col justify-center bg-slate-900 text-white">
-      <h1 className="mb-10 text-center text-xl">
-        {isLogin ? 'Login' : 'Registration'}
-      </h1>
-      <form className="flex w-1/3 flex-col mx-auto gap-5" action='#'>
-        <input type="text" className="input" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-        <input type="text" className="input" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-        <button onClick={() => {console.log(email + password)}} className="btn btn-green mx-auto ">Submit</button>
-      </form>
-
-	const loginHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+  const loginHandler = async (e: React.FormEvent<HTMLFormElement>) => {
 		try {
 			e.preventDefault()
 			const data = await AuthService.login({ email, password })
