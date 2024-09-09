@@ -4,6 +4,7 @@ import { toast } from 'react-toastify'
 import { setTokenFromLocalStorage } from '../helpers/localstorage.helper'
 import { useAppDispatch } from '../store/hooks'
 import { useNavigate } from 'react-router-dom'
+import { login } from '../store/user/userSlice'
 
 export const Auth: FC = () => {
 
