@@ -2,6 +2,7 @@ import { FC } from "react";
 import { AiFillCloseCircle, AiFillEdit } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa";
 import { Form } from "react-router-dom";
+import CategoryModal from "../components/CategoryModal";
 
 export const Categories: FC = () => {
   return (
@@ -31,6 +32,8 @@ export const Categories: FC = () => {
         <span>Create a new category</span>
       </button>
     </div>
+
+    <CategoryModal type='post' id={1} setVisibleModal={() => {}} />
   </>
   )
 };
