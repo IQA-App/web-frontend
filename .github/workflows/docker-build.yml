@@ -19,9 +19,19 @@ jobs:
           username: iqaapp
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
+
       - name: Build Docker image
         run: docker build -t iqaapp/web-frontend:latest .
 
       - name: Push Docker image to Docker Hub
         run: docker push iqaapp/web-frontend:latest
+
+      - name: Display Docker images
+        run: docker images
+
 
