@@ -19,3 +19,11 @@ export interface IResponseUserData {
 	token: string | undefined
   user: IResponseUser
 }
+
+export interface ICategory {
+  title: string
+  id: number
+  createdAt: string
+  updatedAt: string
+  transactions: []
+}
