@@ -5,15 +5,17 @@ import { Form, useLoaderData } from 'react-router-dom'
 import CategoryModal from '../components/CategoryModal'
 import { instance } from '../api/axios.api'
 import { ICategory } from '../types/types'
+import { toast } from 'react-toastify'
 
 export const categoriesAction = async ({ request }: any) => {
 	switch (request.method) {
 		case 'POST': {
 			const formData = await request.formData()
-			const category = {
+			const title = {
 				title: formData.get('title'),
 			}
 			await instance.post('/categories', title)
+			toast.success('Category added')
 			return null
 		}
 		case 'PATCH': {
@@ -23,13 +25,14 @@ export const categoriesAction = async ({ request }: any) => {
 				title: formData.get('title'),
 			}
 			await instance.patch(`/categories/category/${category.id}`, category)
-
+			toast.success('Category modified')
 			return null
 		}
 		case 'DELETE': {
 			const formData = await request.formData()
 			const categoryId = formData.get('id')
 			await instance.delete(`/categories/category/${categoryId}`)
+			toast.success('Category deleted')
 			return null
 		}
 	}
