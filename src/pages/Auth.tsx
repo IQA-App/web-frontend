@@ -23,6 +23,7 @@ export const Auth: FC = () => {
 				dispatch(login(data))
 				toast.success('You are logged in.')
 				navigate('/')
+				setIsLogin(!isLogin)
 			}
 		} catch (err: any) {
 			const error = err.response?.data.message
@@ -35,6 +36,7 @@ export const Auth: FC = () => {
 			const data = await AuthService.registration({ email, password })
 			if (data) {
 				toast.success('Account has been created.')
+				setIsLogin(!isLogin)
 			}
 		} catch (err: any) {
 			const error = err.response?.data.message

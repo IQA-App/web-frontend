@@ -30,7 +30,6 @@ const CategoryModal: FC<ICategoryModal> = ({ type, id, setVisibleModal }) => {
 				<div className="flex items-center gap-2">
 					<button className="btn btn-green " type="submit">
 						{type === 'patch' ? 'Save' : 'Create'}
-						Submit
 					</button>
 					<button
 						onClick={() => setVisibleModal(false)}
