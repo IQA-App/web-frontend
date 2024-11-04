@@ -19,7 +19,7 @@ export const Auth: FC = () => {
 			e.preventDefault()
 			const data = await AuthService.login({ email, password })
 			if (data) {
-				setTokenFromLocalStorage('token', data.token)
+				setTokenFromLocalStorage('access_token', data.access_token)
 				dispatch(login(data))
 				toast.success('You are logged in.')
 				navigate('/')
