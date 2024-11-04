@@ -14,7 +14,7 @@ export const Header: FC = () => {
 
 	const logoutHandler = () => {
 		dispatch(logout())
-		removeTokenFromLocalStorage('token')
+		removeTokenFromLocalStorage('access_token')
 		toast.success('You are logged out.')
 		navigate('/')
 	}
