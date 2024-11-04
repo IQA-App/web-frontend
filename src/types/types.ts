@@ -1,7 +1,7 @@
 export interface IUser {
 	id: number
 	email: string
-	token: string
+	access_token: string
 }
 
 export interface IUserData {
