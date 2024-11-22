@@ -6,9 +6,8 @@ export const instance = axios.create({
 	headers: {
 		Authorization: `Bearer ${getTokenFromLocalStorage() || ''}`,
 	},
-},
-)
-
+})
+console.log('test')
 instance.interceptors.request.use(
 	async (requestConfig: InternalAxiosRequestConfig) => {
 		requestConfig.headers['Authorization'] =
