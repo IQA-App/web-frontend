@@ -21,7 +21,7 @@ export const categoriesAction = async ({ request }: any) => {
 		case 'PATCH': {
 			const formData = await request.formData()
 			const category = {
-				id: formData.get('id'),
+				id: +formData.get('id'),
 				title: formData.get('title'),
 			}
 			await instance.patch(`/categories/category/${category.id}`, category)
@@ -30,7 +30,7 @@ export const categoriesAction = async ({ request }: any) => {
 		}
 		case 'DELETE': {
 			const formData = await request.formData()
-			const categoryId = formData.get('id')
+			const categoryId = +formData.get('id')
 			await instance.delete(`/categories/category/${categoryId}`)
 			toast.success('Category deleted')
 			return null

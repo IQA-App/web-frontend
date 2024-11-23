@@ -32,7 +32,7 @@ export const transactionAction = async ({ request }: any) => {
 			const newTransaction = {
 				title: formData.get('title'),
 				amount: +formData.get('amount'),
-				category: formData.get('category'),
+				category: +formData.get('category'),
 				type: formData.get('type'),
 			}
 
@@ -42,7 +42,7 @@ export const transactionAction = async ({ request }: any) => {
 		}
 		case 'DELETE': {
 			const formData = await request.formData()
-			const transactionId = formData.get('id')
+			const transactionId = +formData.get('id')
 			await instance.delete(`/transactions/transaction/${transactionId}`)
 			toast.success('Transaction deleted')
 			return null
