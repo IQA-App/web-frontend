@@ -25,7 +25,7 @@ const TransactionForm: FC = () => {
 				<label className="grid" htmlFor="amount">
 					<span>Amount</span>
 					<input
-						type="number"
+						type="text"
 						className="input border-slate-700"
 						placeholder="Amount..."
 						name="amount"
