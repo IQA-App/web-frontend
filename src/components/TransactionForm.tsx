@@ -10,7 +10,7 @@ const TransactionForm: FC = () => {
 
 	return (
 		<div className="rounded-md bg-slate-800 p-4">
-			TransactionForm
+			Enter your transaction:
 			<Form className="grid gap-2" method="post" action="/transactions">
 				<label className="grid" htmlFor="title">
 					<span>Title</span>
