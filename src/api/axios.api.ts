@@ -2,8 +2,7 @@ import axios, { InternalAxiosRequestConfig } from 'axios'
 import { getTokenFromLocalStorage } from '../helpers/localstorage.helper'
 
 export const instance = axios.create({
-	// baseURL: '/api',
-	baseURL: 'http://localhost:8080/api',
+	baseURL: '/api',
 	headers: {
 		Authorization: `Bearer ${getTokenFromLocalStorage() || ''}`,
 	},
