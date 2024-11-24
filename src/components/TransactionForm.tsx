@@ -49,6 +49,7 @@ const TransactionForm: FC = () => {
 				)}
 
 				<button
+					type="button"
 					onClick={() => setVisibleModal(true)}
 					className="max-w-fit flex items-center gap-2 text-white/50 hover:text-white"
 				>
@@ -81,7 +82,6 @@ const TransactionForm: FC = () => {
 					Submit
 				</button>
 			</Form>
-      
 			{/* Add transaction modal*/}
 			{visibleModal && (
 				<CategoryModal type="post" setVisibleModal={setVisibleModal} />
