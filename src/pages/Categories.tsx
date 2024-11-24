@@ -24,14 +24,14 @@ export const categoriesAction = async ({ request }: any) => {
 				id: +formData.get('id'),
 				title: formData.get('title'),
 			}
-			await instance.patch(`/categories/category/${category.id}`, category)
+			await instance.patch(`/categories/${category.id}`, category)
 			toast.success('Category modified')
 			return null
 		}
 		case 'DELETE': {
 			const formData = await request.formData()
 			const categoryId = +formData.get('id')
-			await instance.delete(`/categories/category/${categoryId}`)
+			await instance.delete(`/categories/${categoryId}`)
 			toast.success('Category deleted')
 			return null
 		}
