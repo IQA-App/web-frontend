@@ -6,6 +6,8 @@ import { transactionAction, transactionLoader, Transactions } from '../pages/Tra
 import { Categories, categoriesAction, categoryLoader } from '../pages/Categories'
 import { Auth } from '../pages/Auth'
 import { ProtectedRoute } from '../components/ProtectedRoute'
+import Placeholder from '../pages/Placeholder'
+import Tetris from '../pages/EasterEgg/Tetris'
 
 export const router = createBrowserRouter([
 	{
@@ -43,4 +45,10 @@ export const router = createBrowserRouter([
 			},
 		],
 	},
+  {
+    path: 'get-started',
+    element: (
+      <Tetris />
+    ),
+  },
 ])

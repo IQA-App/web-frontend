@@ -26,7 +26,7 @@ export const Home: FC = () => {
 					Get Started
 				</Link>
 				<Link
-					to={'/transactions'}
+					to={'/get-started'}
 					className="mt-2 rounded-md bg-gray-500 px-6 py-2 hover:bg-gray-600"
 				>
 					Learn More
