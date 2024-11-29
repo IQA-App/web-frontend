@@ -21,20 +21,16 @@ const Tetris: FC = () => {
 	const [score, setScore, rows, setRows, level, setLevel] =
 		useGameStatus(rowsCleared)
 
-	console.log(`19aaa rerender`)
 
 	const movePlayer = (dir: number) => {
-		console.log(`29aaa`, player, dir)
 		if (!checkCollision(player, stage, { x: dir, y: 0 })) {
 			updatePlayerPos({ x: dir, y: 0 })
 		}
 	}
 
 	const startGame = () => {
-		console.log('test')
 		setStage(createStage())
 		setDropTime(1000)
-		// setDropTime(null)
 		resetPlayer()
 		setScore(0)
 		setLevel(0)
@@ -46,14 +42,13 @@ const Tetris: FC = () => {
 		// increase level after 10 rows
 		if (rows > (level + 1) * 10) {
 			setLevel((prev) => prev + 1)
-			//   // increase speed
-			// setDropTime(1000 / (level + 1) + 200)
+			// increase speed
+			setDropTime(1000 / (level + 1) + 200)
 		}
 		if (!checkCollision(player, stage, { x: 0, y: 1 })) {
 			updatePlayerPos({ x: 0, y: 1, collided: false })
 		} else {
 			if (player.pos.y < 1) {
-				console.log('Game Over!')
 				setGameOver(true)
 				setDropTime(null)
 			}
@@ -64,14 +59,12 @@ const Tetris: FC = () => {
 	const keyUp = ({ keyCode }: { keyCode: number }) => {
 		if (!gameOver) {
 			if (keyCode === 40) {
-				// setDropTime(null)
 				setDropTime(1000 / (level + 1) + 200)
 			}
 		}
 	}
 
 	const dropPlayer = () => {
-		console.log('interval off')
 		setDropTime(null)
 		drop()
 	}
@@ -80,7 +73,6 @@ const Tetris: FC = () => {
 		if (!gameOver) {
 			switch (keyCode) {
 				case 37:
-					console.log(`81aaa`, keyCode)
 					movePlayer(-1)
 					break
 				case 39:
@@ -102,7 +94,7 @@ const Tetris: FC = () => {
 	return (
 		<StyledTetrisWrapper
 			role="button"
-			tabIndex="0"
+			tabIndex={0}
 			onKeyDown={(e) => move(e)}
 			onKeyUp={keyUp}
 		>

@@ -2,14 +2,14 @@ import { useEffect, useState } from "react"
 import { createStage } from "../helpers/gameHelpers"
 import { IPlayer } from "../types/types"
 
-export const useStage = (player: IPlayer, resetPlayer: void) => {
+export const useStage = (player: IPlayer, resetPlayer: () => void) => {
   const [stage, setStage] = useState(createStage())
   const [rowsCleared, setRowsCleared] = useState<number>(0)
 
   useEffect(() => {
     setRowsCleared(0)
 
-    const sweepRows = (newStage: (number | string)[][]) => newStage.reduce<(number | string)[][]>((acc, row) => {
+    const sweepRows = (newStage: (number | string)[][][]) => newStage.reduce<(number | string)[][][]>((acc, row) => {
       if (row.findIndex(cell => cell[0] === 0) === -1) {
         setRowsCleared(prev => prev + 1)
         acc.unshift(new Array(newStage[0].length).fill([0, 'clear']))
@@ -19,9 +19,9 @@ export const useStage = (player: IPlayer, resetPlayer: void) => {
       return acc
     }, [])
 
-    const updateStage = (prevStage: (number | string)[][]): (number | string)[][] => {
+    const updateStage = (prevStage: (number | string)[][][]) => {
       // Flush the stage
-      const newStage = prevStage.map((row: (number | string)[]) => row.map((cell: (number | string)) => (cell[1] === 'clear' ? [0, 'clear'] : cell)))
+      const newStage: (number | string)[][][] = prevStage.map((row) => row.map((cell) => (cell[1] === 'clear' ? [0, 'clear'] : cell)))
 
       // draw a new stage
       player.tetromino.forEach((row, y) => {
@@ -34,6 +34,7 @@ export const useStage = (player: IPlayer, resetPlayer: void) => {
           }
         })
       })
+      
       // check if collided
       if (player.collided) {
         resetPlayer()
@@ -42,7 +43,7 @@ export const useStage = (player: IPlayer, resetPlayer: void) => {
       return newStage
     }
 
-    setStage((prev: (number | string)[][]) => updateStage(prev))
+    setStage((prev) => updateStage(prev))
   }, [player])
 
   return [stage, setStage, rowsCleared] as const

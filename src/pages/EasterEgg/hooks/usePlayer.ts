@@ -19,7 +19,7 @@ export const usePlayer = () => {
   return rotatedTetro.reverse()
   }
 
-  const playerRotate = (stage: (number | string)[][], dir: number) => {
+  const playerRotate = (stage: (number | string)[][][], dir: number) => {
     const clonedPlayer = JSON.parse(JSON.stringify(player))
     clonedPlayer.tetromino = rotate(clonedPlayer.tetromino, dir)
 
@@ -39,7 +39,6 @@ export const usePlayer = () => {
   }
 
   const updatePlayerPos = ({x, y, collided}: IPosPlayerUpdate) => {
-    console.log(`42aaa`, x)
     setPlayer(prev => ({
       ...prev,
       pos: {x: (prev.pos.x += x), y: (prev.pos.y += y)},
