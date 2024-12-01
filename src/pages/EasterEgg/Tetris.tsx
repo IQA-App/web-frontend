@@ -21,7 +21,6 @@ const Tetris: FC = () => {
 	const [score, setScore, rows, setRows, level, setLevel] =
 		useGameStatus(rowsCleared)
 
-
 	const movePlayer = (dir: number) => {
 		if (!checkCollision(player, stage, { x: dir, y: 0 })) {
 			updatePlayerPos({ x: dir, y: 0 })
@@ -111,7 +110,10 @@ const Tetris: FC = () => {
 						</div>
 					)}
 					<StartButton callback={startGame} />
-					<Link to={'/'} className="box-border p-4  rounded-3xl mb-5 ml-5 text-white bg-neutral-800 block border-none text-xl text-center">
+					<Link
+						to={'/'}
+						className="box-border p-4  rounded-3xl mb-5 ml-5 text-white bg-neutral-800 block border-none text-xl text-center"
+					>
 						Back
 					</Link>
 				</aside>

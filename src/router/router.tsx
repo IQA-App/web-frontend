@@ -2,8 +2,16 @@ import { createBrowserRouter } from 'react-router-dom'
 import { Layout } from '../pages/Layout'
 import { ErrorPage } from '../pages/ErrorPage'
 import { Home } from '../pages/Home'
-import { transactionAction, transactionLoader, Transactions } from '../pages/Transactions'
-import { Categories, categoriesAction, categoryLoader } from '../pages/Categories'
+import {
+	transactionAction,
+	transactionLoader,
+	Transactions,
+} from '../pages/Transactions'
+import {
+	Categories,
+	categoriesAction,
+	categoryLoader,
+} from '../pages/Categories'
 import { Auth } from '../pages/Auth'
 import { ProtectedRoute } from '../components/ProtectedRoute'
 import Tetris from '../pages/EasterEgg/Tetris'
@@ -20,8 +28,8 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: 'transactions',
-        loader: transactionLoader,
-        action: transactionAction,
+				loader: transactionLoader,
+				action: transactionAction,
 				element: (
 					<ProtectedRoute>
 						<Transactions />
@@ -44,10 +52,8 @@ export const router = createBrowserRouter([
 			},
 		],
 	},
-  {
-    path: 'get-started',
-    element: (
-      <Tetris />
-    ),
-  },
+	{
+		path: 'get-started',
+		element: <Tetris />,
+	},
 ])

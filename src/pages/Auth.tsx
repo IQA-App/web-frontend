@@ -7,14 +7,13 @@ import { useNavigate } from 'react-router-dom'
 import { login } from '../store/user/userSlice'
 
 export const Auth: FC = () => {
-
 	const [email, setEmail] = useState<string>('')
 	const [password, setPassword] = useState<string>('')
 	const [isLogin, setIsLogin] = useState<boolean>(false)
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 
-  const loginHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+	const loginHandler = async (e: React.FormEvent<HTMLFormElement>) => {
 		try {
 			e.preventDefault()
 			const data = await AuthService.login({ email, password })
