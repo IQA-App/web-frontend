@@ -3,7 +3,7 @@ import { StyledCell } from './styles/StyledCell'
 import { TETROMINOS } from './helpers/tetrominos'
 
 interface ICell {
-  type: string
+  type: string | number
 }
 
 const Cell: FC<ICell> = ({type}) => {

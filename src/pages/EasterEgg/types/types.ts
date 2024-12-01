@@ -21,5 +21,5 @@ export interface IPlayer {
 export interface IPosPlayerUpdate {
   x: number
   y: number
-  collided: boolean
+  collided?: boolean | undefined
 }

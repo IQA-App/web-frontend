@@ -9,9 +9,7 @@ export const useGameStatus = (rowsCleared: number) => {
   const linePoints = [40, 100, 300, 1200]
 
   const calcScore = useCallback(() => {
-    // we have score
     if (rowsCleared > 0) {
-      // the orig score calced
       setScore(prev => prev + linePoints[rowsCleared - 1] * (level + 1))
       setRows(prev => prev + rowsCleared)
     }
