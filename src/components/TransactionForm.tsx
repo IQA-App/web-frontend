@@ -37,7 +37,6 @@ const TransactionForm: FC = () => {
 
 	const submit = useSubmit()
 	const onFormSubmit = (formData: ITransactionPageData) => {
-		console.log(formData)
 		submit(formData, { method: 'POST' })
 		setFormData({
 			title: '',
