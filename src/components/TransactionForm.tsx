@@ -1,17 +1,41 @@
 import { FC, useState } from 'react'
 import { FaPlus } from 'react-icons/fa'
 import { Form, useLoaderData } from 'react-router-dom'
-import { IResponseTransactionLoader } from '../types/types'
+import { IResponseTransactionLoader, ITransactionPageData } from '../types/types'
 import CategoryModal from './CategoryModal'
 
 const TransactionForm: FC = () => {
 	const { categories } = useLoaderData() as IResponseTransactionLoader
 	const [visibleModal, setVisibleModal] = useState<boolean>(false)
 
+  const [formData, setFormData] = useState<ITransactionPageData>({ // check if needed
+    title: '',
+    amount: '',
+    category: categories[0].id,
+    type: 'income',
+});    
+
+const handleInputChange = (e) => {
+  const { name, value } = e.target; 
+  setFormData(prev => ({
+      ...prev,
+      [name]: value,
+  }));
+};
+
+const onFormSubmit = () => {
+  setFormData({
+    title: '',
+    amount: '',
+    category: formData.category || +categories[0].id,
+    type: formData.type || 'income',
+  })
+}
+
 	return (
 		<div className="rounded-md bg-slate-800 p-4">
 			Enter your transaction:
-			<Form className="grid gap-2" method="post" action="/transactions">
+			<Form className="grid gap-2" method="post" action="/transactions" onSubmit={onFormSubmit}>
 				<label className="grid" htmlFor="title">
 					<span>Title</span>
 					<input
@@ -19,7 +43,10 @@ const TransactionForm: FC = () => {
 						className="input border-slate-700"
 						placeholder="Title..."
 						name="title"
+            value={formData.title}
+            autoFocus
 						required
+            onChange={handleInputChange}
 					/>
 				</label>
 				<label className="grid" htmlFor="amount">
@@ -29,7 +56,9 @@ const TransactionForm: FC = () => {
 						className="input border-slate-700"
 						placeholder="Amount..."
 						name="amount"
+            value={formData.amount}
 						required
+            onChange={handleInputChange}
 					/>
 				</label>
 				{/* Select */}
@@ -63,8 +92,10 @@ const TransactionForm: FC = () => {
 							type="radio"
 							name="type"
 							value={'income'}
+              checked={'income' === formData.type}
 							className="form-radio text-blue-600"
-						/>
+              onChange={handleInputChange}
+              />
 						<span>Income</span>
 					</label>
 					<label className="flex cursor-pointer items-center gap-2">
@@ -72,8 +103,10 @@ const TransactionForm: FC = () => {
 							type="radio"
 							name="type"
 							value={'expense'}
+              checked={'expense' === formData.type}
 							className="form-radio text-blue-600"
-						/>
+              onChange={handleInputChange}
+              />
 						<span>Expense</span>
 					</label>
 				</div>

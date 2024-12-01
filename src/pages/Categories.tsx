@@ -7,7 +7,7 @@ import { instance } from '../api/axios.api'
 import { ICategory } from '../types/types'
 import { toast } from 'react-toastify'
 
-export const categoriesAction = async ({ request }: any) => {
+export const categoriesAction = async ({ request }) => {
 	switch (request.method) {
 		case 'POST': {
 			const formData = await request.formData()

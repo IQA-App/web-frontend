@@ -25,7 +25,7 @@ export const transactionLoader = async () => {
 	}
 	return data
 }
-export const transactionAction = async ({ request }: any) => {
+export const transactionAction = async ({ request }) => {
 	switch (request.method) {
 		case 'POST': {
 			const formData = await request.formData()
