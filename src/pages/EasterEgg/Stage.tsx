@@ -3,7 +3,7 @@ import Cell from './Cell'
 import { StyledStage } from './styles/StyledStage'
 
 interface IStage {
-  stage: (number | string)[][]
+  stage: (number | string)[][][]
 }
 
 const Stage: FC<IStage> = ({stage}) => {
