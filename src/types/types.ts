@@ -46,3 +46,10 @@ export interface IResponseTransactionLoader {
 	totalIncome: number
 	totalExpense: number
 }
+
+export interface ITransactionPageData {
+  title: string,
+  amount: string,
+  category: string | number,
+  type: 'income' | 'expense',
+}
