@@ -36,7 +36,7 @@ export interface ITransaction {
 	createdAt: string
 	updatedAt: string
 	id: number
-	type: string
+	type: 'income' | 'expense'
 	category: ICategory
 }
 
@@ -47,7 +47,7 @@ export interface IResponseTransactionLoader {
 	totalExpense: number
 }
 
-export interface ITransactionPageData {
+export interface ITransactionPageData extends Partial<HTMLFormElement> {
   title: string,
   amount: string,
   category: string | number,

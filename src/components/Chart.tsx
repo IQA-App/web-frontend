@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Cell, Legend, Pie, PieChart, Tooltip } from 'recharts'
 
-const COLORS = ['#00C49F', '#FF8042']
+const COLORS = ['#ff7388', '#00C49F']
 
 interface IChart {
 	totalIncome: number
@@ -16,10 +16,13 @@ interface IData {
 export const Chart: FC<IChart> = ({ totalIncome, totalExpense }) => {
 	const data = new Array<IData>(
 		{
-			value: totalExpense,
+			value: +totalExpense,
 			name: 'Expense',
 		},
-		{ value: totalIncome, name: 'Income' },
+		{
+			value: +totalIncome,
+			name: 'Income',
+		},
 	)
 	return (
 		<PieChart width={240} height={240}>
