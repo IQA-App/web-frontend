@@ -8,8 +8,6 @@ import {
 import CategoryModal from './CategoryModal'
 import { FieldValues, useForm } from 'react-hook-form'
 
-
-
 const TransactionForm: FC = () => {
 	const { categories } = useLoaderData() as IResponseTransactionLoader
 	const [visibleModal, setVisibleModal] = useState<boolean>(false)
@@ -39,7 +37,7 @@ const TransactionForm: FC = () => {
 
 	const submit = useSubmit()
 	const onFormSubmit = (formData: ITransactionPageData) => {
-    console.log(formData)
+		console.log(formData)
 		submit(formData, { method: 'POST' })
 		setFormData({
 			title: '',
@@ -60,7 +58,7 @@ const TransactionForm: FC = () => {
 
 	return (
 		<div className="rounded-md bg-slate-800 p-4">
-			<span className='text-lg'>Enter your transaction:</span>
+			<span className="text-lg">Enter your transaction:</span>
 			<Form
 				className="grid gap-2"
 				method="post"
@@ -68,7 +66,12 @@ const TransactionForm: FC = () => {
 				onSubmit={handleSubmit(onFormSubmit)}
 			>
 				<label className="grid" htmlFor="title">
-					<span className='mt-3'>Title <span className='text-red-500'>{errors.title?.message && errors.title.message}</span></span>
+					<span className="mt-3">
+						Title{' '}
+						<span className="text-red-500">
+							{errors.title?.message && errors.title.message}
+						</span>
+					</span>
 					<input
 						type="text"
 						className="input border-slate-700"
@@ -85,11 +88,16 @@ const TransactionForm: FC = () => {
 									value.length <= 20 || 'The title is too long',
 							},
 						})}
-            onChange={handleInputChange}
+						onChange={handleInputChange}
 					/>
 				</label>
 				<label className="grid" htmlFor="amount">
-					<span className='mt-3'>Amount <span className='text-red-500'>{errors.amount?.message && errors.amount.message}</span></span>
+					<span className="mt-3">
+						Amount{' '}
+						<span className="text-red-500">
+							{errors.amount?.message && errors.amount.message}
+						</span>
+					</span>
 					<input
 						type="text"
 						className="input border-slate-700"
@@ -113,7 +121,7 @@ const TransactionForm: FC = () => {
 				{/* Select */}
 				{categories.length ? (
 					<label htmlFor="category" className="grid">
-						<span className='mt-3'>Category</span>
+						<span className="mt-3">Category</span>
 						<select className="input border-slate-700" name="category" required>
 							{categories.map((category, idx) => (
 								<option key={idx} value={category.id}>

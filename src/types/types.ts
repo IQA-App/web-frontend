@@ -48,8 +48,8 @@ export interface IResponseTransactionLoader {
 }
 
 export interface ITransactionPageData extends Partial<HTMLFormElement> {
-  title: string,
-  amount: string,
-  category: string | number,
-  type: 'income' | 'expense',
+	title: string
+	amount: string
+	category: string | number
+	type: 'income' | 'expense'
 }

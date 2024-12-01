@@ -25,7 +25,7 @@ export const Chart: FC<IChart> = ({ totalIncome, totalExpense }) => {
 		},
 	)
 
-  return (Number(totalIncome) && Number(totalExpense)) ? (
+	return Number(totalIncome) && Number(totalExpense) ? (
 		<PieChart width={240} height={240}>
 			<Pie
 				data={data}
@@ -45,6 +45,8 @@ export const Chart: FC<IChart> = ({ totalIncome, totalExpense }) => {
 			<Tooltip />
 		</PieChart>
 	) : (
-    <div className='text-red-500 text-lg text-center font-bold'>Uh-oh! Chart data is unavailable</div>
-  )
+		<div className="text-red-500 text-lg text-center font-bold">
+			Uh-oh! Chart data is unavailable
+		</div>
+	)
 }

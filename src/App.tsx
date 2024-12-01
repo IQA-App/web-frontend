@@ -4,7 +4,7 @@ import { useAppDispatch } from './store/hooks'
 import { getTokenFromLocalStorage } from './helpers/localstorage.helper'
 import { AuthService } from './services/auth.service'
 import { login, logout } from './store/user/userSlice'
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'
 import { useEffect } from 'react'
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
 		} catch (err: any) {
 			const error = err.response?.data.message
 			toast.error(error.toString())
-    }
+		}
 	}
 
 	useEffect(() => {
