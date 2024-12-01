@@ -80,7 +80,7 @@ const TransactionForm: FC = () => {
 							required: 'The title is required',
 							validate: {
 								minLength: (value) =>
-									value.length >= 5 || 'The title is too short',
+									value.length >= 2 || 'The title is too short',
 								maxLength: (value) =>
 									value.length <= 20 || 'The title is too long',
 							},
