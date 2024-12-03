@@ -3,7 +3,6 @@ import { FaPlus } from 'react-icons/fa'
 import { Form, useLoaderData, useSubmit } from 'react-router-dom'
 import {
 	IResponseTransactionLoader,
-	ITransactionPageData,
 } from '../types/types'
 import CategoryModal from './CategoryModal'
 import { FieldValues, useForm } from 'react-hook-form'
@@ -12,7 +11,7 @@ const TransactionForm: FC = () => {
 	const { categories } = useLoaderData() as IResponseTransactionLoader
 	const [visibleModal, setVisibleModal] = useState<boolean>(false)
 
-	const [formData, setFormData] = useState<ITransactionPageData>({
+	const [formData, setFormData] = useState({
 		title: '',
 		amount: '',
 		category: categories[0].id,
