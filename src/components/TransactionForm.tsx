@@ -58,59 +58,6 @@ const TransactionForm: FC = () => {
 				action="/transactions"
 				onSubmit={handleSubmit(onFormSubmit)}
 			>
-				<label className="grid" htmlFor="title">
-					<span className="mt-3">
-						Title{' '}
-						<span className="text-red-500">
-							{errors.title?.message && errors.title.message}
-						</span>
-					</span>
-					<input
-						type="text"
-						className="input border-slate-700"
-						placeholder="Title..."
-						name="title"
-						value={formData.title}
-						autoFocus
-						{...register('title', {
-							required: 'The title is required',
-							validate: {
-								minLength: (value) =>
-									value.length >= 2 || 'The title is too short',
-								maxLength: (value) =>
-									value.length <= 20 || 'The title is too long',
-							},
-						})}
-						onChange={handleInputChange}
-					/>
-				</label>
-				<label className="grid" htmlFor="amount">
-					<span className="mt-3">
-						Amount{' '}
-						<span className="text-red-500">
-							{errors.amount?.message && errors.amount.message}
-						</span>
-					</span>
-					<input
-						type="text"
-						className="input border-slate-700"
-						placeholder="Amount..."
-						name="amount"
-						value={formData.amount}
-						{...register('amount', {
-							required: 'The amount is required',
-							pattern: {
-								value: /^(?=.)([+-]?([0-9]*)(\.([0-9]+))?)$/,
-								message: 'Wrong number format',
-							},
-							validate: {
-								positive: (value) =>
-									+value > 0 || 'The amount cannot be negative or zero',
-							},
-						})}
-						onChange={handleInputChange}
-					/>
-				</label>
 				{/* Select */}
 				{categories.length ? (
 					<label htmlFor="category" className="grid">
@@ -172,6 +119,59 @@ const TransactionForm: FC = () => {
 						<span>Expense</span>
 					</label>
 				</div>
+				<label className="grid" htmlFor="title">
+					<span className="mt-3">
+						Title{' '}
+						<span className="text-red-500">
+							{errors.title?.message && errors.title.message}
+						</span>
+					</span>
+					<input
+						type="text"
+						className="input border-slate-700"
+						placeholder="Title..."
+						name="title"
+						value={formData.title}
+						autoFocus
+						{...register('title', {
+							required: 'The title is required',
+							validate: {
+								minLength: (value) =>
+									value.length >= 2 || 'The title is too short',
+								maxLength: (value) =>
+									value.length <= 20 || 'The title is too long',
+							},
+						})}
+						onChange={handleInputChange}
+					/>
+				</label>
+				<label className="grid" htmlFor="amount">
+					<span className="mt-3">
+						Amount{' '}
+						<span className="text-red-500">
+							{errors.amount?.message && errors.amount.message}
+						</span>
+					</span>
+					<input
+						type="text"
+						className="input border-slate-700"
+						placeholder="Amount..."
+						name="amount"
+						value={formData.amount}
+						{...register('amount', {
+							required: 'The amount is required',
+							pattern: {
+								value: /^(?=.)([+-]?([0-9]*)(\.([0-9]+))?)$/,
+								message: 'Wrong number format',
+							},
+							validate: {
+								positive: (value) =>
+									+value > 0 || 'The amount cannot be negative or zero',
+							},
+						})}
+						onChange={handleInputChange}
+					/>
+				</label>
 				{/* Submit button */}
 				<button className="btn btn-green max-w-fit mt-2" type="submit">
 					Submit
