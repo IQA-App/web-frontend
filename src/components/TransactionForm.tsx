@@ -25,23 +25,18 @@ const TransactionForm: FC = () => {
 		clearErrors,
 		formState: { errors },
 	} = useForm({
-		defaultValues: {
-			title: '',
-			amount: '',
-			category: formData.category || +categories[0].id,
-			type: formData.type || 'income',
-		},
+		defaultValues: formData,
 		mode: 'onSubmit',
 		reValidateMode: 'onSubmit',
 	})
 
 	const submit = useSubmit()
-	const onFormSubmit = (formData: ITransactionPageData) => {
+	const onFormSubmit = () => {
 		submit(formData, { method: 'POST' })
 		setFormData({
 			title: '',
 			amount: '',
-			category: formData.category || +categories[0].id,
+			category: formData.category || categories[0].id,
 			type: formData.type || 'income',
 		})
 	}
@@ -121,7 +116,13 @@ const TransactionForm: FC = () => {
 				{categories.length ? (
 					<label htmlFor="category" className="grid">
 						<span className="mt-3">Category</span>
-						<select className="input border-slate-700" name="category" required>
+						<select
+							className="input border-slate-700"
+							name="category"
+							value={formData.category}
+							required
+							onChange={handleInputChange}
+						>
 							{categories.map((category, idx) => (
 								<option key={idx} value={category.id}>
 									{category.title}
