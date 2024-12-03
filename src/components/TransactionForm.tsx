@@ -11,10 +11,10 @@ const TransactionForm: FC = () => {
 	const { categories } = useLoaderData() as IResponseTransactionLoader
 	const [visibleModal, setVisibleModal] = useState<boolean>(false)
 
-	const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
 		title: '',
 		amount: '',
-		category: categories[0].id,
+		category: categories?.[0]?.id || undefined,
 		type: 'income',
 	})
 

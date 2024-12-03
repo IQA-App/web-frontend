@@ -61,32 +61,46 @@ const TransactionTable: FC<ITransactionTable> = ({ limit = 3 }) => {
 						</tr>
 					</thead>
 					<tbody>
-						{data?.map((transaction, idx) => (
-							<tr key={idx}>
-								<td>{idx + 1}</td>
-								<td>{transaction.title}</td>
-								<td
-									className={
-										transaction.type === 'income'
-											? 'text-green-500'
-											: 'text-red-500'
-									}
-								>
-									{transaction.type === 'income' ? '+ ' : '- '}
-									{formatToUSD.format(transaction.amount)}
-								</td>
-								<td>{transaction.category?.title || 'Other'}</td>
-								<td>{formatDate(transaction.createdAt)}</td>
-								<td className="">
-									<Form className="flex" method="delete" action="/transactions">
-										<input type="hidden" name="id" value={transaction.id} />
-										<button className="btn hover:btn-red ml-auto">
-											<FaTrash />
-										</button>
-									</Form>
+          {data.length ? (
+							data.map((transaction, idx) => (
+								<tr key={idx}>
+									<td>{idx + 1}</td>
+									<td>{transaction.title}</td>
+									<td
+										className={
+											transaction.type === 'income'
+												? 'text-green-500'
+												: 'text-red-500'
+										}
+									>
+										{transaction.type === 'income' ? '+ ' : '- '}
+										{formatToUSD.format(transaction.amount)}
+									</td>
+									<td>{transaction.category?.title || 'Other'}</td>
+									<td>{formatDate(transaction.createdAt)}</td>
+									<td className="">
+										<Form
+											className="flex"
+											method="delete"
+											action="/transactions"
+										>
+											<input type="hidden" name="id" value={transaction.id} />
+											<button className="btn hover:btn-red ml-auto">
+												<FaTrash />
+											</button>
+										</Form>
+									</td>
+								</tr>
+							))
+						) : (
+							<tr>
+								<td colSpan={6}>
+									<h6 className="mt-4 text-lg normal-case text-red-300 text-center">
+										No transactions here yet
+									</h6>
 								</td>
 							</tr>
-						))}
+						)}
 					</tbody>
 				</table>
 			</div>

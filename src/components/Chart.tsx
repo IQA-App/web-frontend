@@ -16,11 +16,11 @@ interface IData {
 export const Chart: FC<IChart> = ({ totalIncome, totalExpense }) => {
 	const data = new Array<IData>(
 		{
-			value: totalExpense,
+			value: +totalExpense,
 			name: 'Expense',
 		},
 		{
-			value: totalIncome,
+			value: +totalIncome,
 			name: 'Income',
 		},
 	)
