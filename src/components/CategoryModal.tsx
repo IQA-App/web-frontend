@@ -3,7 +3,7 @@ import { Form } from 'react-router-dom'
 
 interface ICategoryModal {
 	type: 'post' | 'patch'
-	id?: number
+	id?: number | string
 	setVisibleModal: (visible: boolean) => void
 }
 

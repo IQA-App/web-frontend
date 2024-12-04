@@ -27,7 +27,7 @@ export interface ICategory {
 	transactions?: []
 	createdAt: string
 	updatedAt: string
-	id: number
+	id: number | string
 }
 
 export interface ITransaction {
@@ -45,4 +45,11 @@ export interface IResponseTransactionLoader {
 	transactions: ITransaction[]
 	totalIncome: number
 	totalExpense: number
+}
+
+export type ISortDirection = 'ASC' | 'DESC' | 'UNSORTED'
+
+export interface ISortConfig {
+  key: keyof ITransaction
+  direction: ISortDirection
 }

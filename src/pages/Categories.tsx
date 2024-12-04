@@ -21,7 +21,7 @@ export const categoriesAction = async ({ request }) => {
 		case 'PATCH': {
 			const formData = await request.formData()
 			const category = {
-				id: +formData.get('id'),
+				id: formData.get('id'),
 				title: formData.get('title'),
 			}
 			await instance.patch(`/categories/${category.id}`, category)
@@ -30,7 +30,7 @@ export const categoriesAction = async ({ request }) => {
 		}
 		case 'DELETE': {
 			const formData = await request.formData()
-			const categoryId = +formData.get('id')
+			const categoryId = formData.get('id')
 			await instance.delete(`/categories/${categoryId}`)
 			toast.success('Category deleted')
 			return null
@@ -44,8 +44,8 @@ export const categoryLoader = async () => {
 }
 
 export const Categories: FC = () => {
-	const categories = useLoaderData() as ICategory[]
-	const [categoryId, setCategoryId] = useState<number>(0)
+	const categories = useLoaderData() as ICategory[] 
+	const [categoryId, setCategoryId] = useState<number | string>(0)
 	const [isEdit, setIsEdit] = useState<boolean>(false)
 
 	const [visibleModal, setVisibleModal] = useState<boolean>(false)
